@@ -1,172 +1,276 @@
-//å­¦æ ¡cè¯­è¨€ä½œä¸š
-//------------------------------------------------------
-//ä»é”®ç›˜ä¸Šè¾“å…¥xçš„å€¼ï¼ŒæŒ‰å‡½æ•°è®¡ç®—yçš„å€¼
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+
+
+//²âÊÔ ÕûĞÍÊı×éÖĞ¿ÉÒÔ·ÅÕûĞÍ±äÁ¿
 //int main()
-//{ 
+//{
+//	int a = 10;
+//	int arr[3] = { 1,2,a };
+//	printf("%d\n", arr[2]);
+//	return 0;
+//}
+
+
+//º¯ÊıÖ¸ÕëÊı×éµÄÊ¹ÓÃ
+//Ğ´Ò»¸ö¼ÆËãÆ÷ ÊµÏÖÕûÊıµÄ¼Ó¡¢¼õ¡¢³Ë¡¢³ı
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//
+//void menu()
+//{
+//	printf("****************************\n");
+//	printf("*****1.add        2.sub*****\n");
+//	printf("*****3.mul        4.div*****\n");
+//	printf("*****0.exit          *******\n");
+//	printf("****************************\n");
+//}
+
+//int main()
+//{
+//	int input = 0;
 //	int x = 0;
-//	scanf("%d", &x);
-//	if (x < -1)
-//		printf("%d", 1);
-//	else if (x >= -1 && x < 100)
-//		printf("%d", 3 * x*x - 4 * x + 5);
-//	else
+//	int y = 0;
+//	int ret = 0;
+//	do
 //	{
-//		printf("%d", 2*x - 3);
-//	}
-//	return 0;
-//}
-
-
-//ç”±é”®ç›˜è¾“å…¥ä¸‰ä¸ªæ•´æ•°ï¼Œè¾“å‡ºå…¶ä¸­æœ€å¤§çš„æ•°
-//int main()
-//{
-//	int a, b, c;
-//	scanf("%d %d %d", &a, &b, &c);
-//	int tmp;
-//	if (a < b)
-//	{
-//		tmp = a;
-//		a = b;
-//		b = tmp;
-//	}
-//	if (a < c)
-//	{
-//		tmp = a;
-//		a = c;
-//		c = tmp;
-//	}
-//	printf("%d", a);
-//	return 0;
-//}
-
-
-//è¦æ±‚è¾“äººæŸäººæŸæœˆæ”¶å…¥, è¾“å‡ºç¼´ç¨åå®é™…æ”¶äºº
-//int main()
-//{
-//	int sal = 0;
-//	scanf("%d", &sal);
-//	if (sal <= 1500)
-//		printf("%d", sal);
-//	else if (sal > 1500 && sal <= 4500)
-//	{
-//		int f = sal - 0.1*(sal - 1500);
-//		printf("%d", f);
-//	}
-//	else if (sal > 4500 && sal <= 9000)
-//	{
-//		double f = sal - 0.2*(sal - 1500);
-//		printf("%d", f);
-//	}
-//	else if (sal > 9000 && sal <= 15000)
-//	{
-//		double f = sal - 0.25*(sal - 1500);
-//		printf("%d", f);
-//	}
-//
-//	else
-//	{
-//		int f = sal - 0.3*(sal - 1500);
-//		printf("%d", f);
-//	}
-//	return 0;
-//}
-
-//æµ‹è¯• æœªè§£å†³ï¼Ÿï¼Ÿï¼Ÿ é—®é¢˜æè¿°:doubleå‹æ•´å‹æ‰“å°ï¼Œå’Œdoubleå…ˆæ”¾åˆ°æ•´å‹é‡Œå†æ•´å‹æ‰“å°ï¼Œè¾“å‡ºç»“æœä¸ä¸€æ ·
-//int main()
-//{
-//	//float f1 = 10000 - 0.25*(10000 - 1500);//floatå‹ä»¥æ•´å‹æ‰“å°ï¼Œè¾“å‡ºä¸º0???
-//	////45 f6 18 00
-//	////0 10001011 11101100001100000000000 - å†…å­˜ä¸­å­˜æ”¾çš„äºŒè¿›åˆ¶åºåˆ—   (-1)^0 * 1.111011000011 * 2^12 = 1111011000011 å³åè¿›åˆ¶7875
-//	////ä»¥æ•´å‹æ‰“å°åº”è¯¥è¦æŠŠå†…å­˜é‡Œè¾¹è¿™ä¸ªäºŒè¿›åˆ¶åºåˆ—å½“æˆæ•´æ•°çš„è¡¥ç 
-//	////ä¸å¯¹ï¼Ÿï¼Ÿï¼Ÿç½‘ä¸ŠæŸ¥æ˜¯è¾“å‡ºå¤±è´¥äº†
-//	//printf("%d\n", f1);
-//
-//	//float f2 = 10000 - 0.25*(10000 - 1500);//floatå‹å­˜åˆ°inté‡Œå†æ‰“å°ï¼Œè¾“å‡ºåˆæ­£å¸¸äº†ï¼Ÿï¼Ÿï¼Ÿ
-//	////0 10001011 11101100001100000000000
-//	////1173755904
-//	//int f3 = f2;//ä¸ºä»€ä¹ˆä¸æ˜¯1173755904ï¼Ÿï¼Ÿï¼Ÿ
-//	//printf("%d\n", f3);
-//
-//	//double a = 0x11223344;
-//	//printf("%d", a);//è¾“å‡ºé0ï¼Œä¸çŸ¥é“ä¸ºä»€ä¹ˆ
-//	return 0;
-//}
-
-
-//è¾“äººå¹´æœˆæ—¥, è¾“å‡ºå®ƒæ˜¯è¿™ä¸€å¹´çš„ç¬¬å‡ å¤©
-//int main()
-//{
-//	int y, m, d;
-//	scanf("%d-%d-%d", &y, &m, &d);
-//	int sum = 0;
-//	int a[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
-//	while (m-1)
-//	{
-//		int day = a[m];
-//		if (((y % 40 && y % 100 != 0) || (y % 4000))&&(m==2))
+//		menu();
+//		printf("ÇëÑ¡Ôñ:>");
+//		scanf("%d", &input);
+//		switch (input)
 //		{
-//			day += 1;
+//		case 1:
+//			printf("ÇëÊäÈëÁ½¸öÕûÊı:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Add(x, y);
+//			printf("%d\n", ret);
+//			break;
+//		case 2:
+//			printf("ÇëÊäÈëÁ½¸öÕûÊı:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Sub(x, y);
+//			printf("%d\n", ret);
+//			break;
+//		case 3:
+//			printf("ÇëÊäÈëÁ½¸öÕûÊı:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Mul(x, y);
+//			printf("%d\n", ret);
+//			break;
+//		case 4:
+//			printf("ÇëÊäÈëÁ½¸öÕûÊı:>");
+//			scanf("%d %d", &x, &y);
+//			ret = Div(x, y);
+//			printf("%d\n", ret);
+//			break;
+//		case 0:
+//			printf("ÍË³ö¼ÆËãÆ÷\n");
+//			break;
+//		default:
+//			printf("Ñ¡Ôñ´íÎó\n");
+//			break;
 //		}
-//		sum += day;
-//		m--;
-//	}
-//	sum += d;
-//	printf("%d", sum);
+//	} while (input);
 //	return 0;
 //}
-
-
-//è¾“å…¥å››ä¸ªæ•°ï¼ŒæŒ‰ä»å¤§åˆ°å°çš„é¡ºåºè¾“å‡º
+//Ê¹ÓÃº¯ÊıÖ¸ÕëÊı×é ¼ò»¯´úÂë
 //int main()
 //{
-//	int a, b, c, d;
-//	int arr[4] = { 0 };
-//	scanf("%d %d %d %d",&arr[0],&arr[1], &arr[2], &arr[3]);
-//	int j = 0;
-//	int i = 2;
-//	int tmp = 0;
-//	for (i = 2; i >= 0; i--)
+//	int input = 0;
+//	int x = 0;
+//	int y = 0;
+//	int ret = 0;
+//
+//	//º¯ÊıÖ¸ÕëÊı×é - ×ªÒÆ±í
+//	int(*pfArr[5])(int, int) = { 0,Add,Sub,Mul,Div };
+//
+//	do
 //	{
-//		for (j = 0; j <= i; j++)
+//		menu();
+//		printf("ÇëÑ¡Ôñ:>");
+//		scanf("%d", &input);
+//		if (input == 0)
 //		{
-//			if (arr[j] < arr[j + 1])
-//			{
-//				tmp = arr[j];
-//				arr[j] = arr[j + 1];
-//				arr[j + 1] = tmp;
-//			}
+//			printf("ÍË³ö¼ÆËãÆ÷\n");
+//			break;
 //		}
-//	}
-//	for (i = 0; i < 4; i++)
-//	{
-//		printf("%d ", arr[i]);
-//	}
+//		else if (input >= 1 && input <= 4)
+//		{
+//			printf("ÇëÊäÈëÁ½¸öÕûÊı:>");
+//			scanf("%d %d", &x, &y);
+//			ret = pfArr[input](x, y);
+//			printf("%d\n", ret);
+//		}
+//		else
+//		{
+//			printf("ÊäÈë´íÎó\n");
+//		}
+//	} while (input);
 //	return 0;
 //}
 
-//void main()//æœªè§£å†³ä½†ä¸é‡è¦ï¼ˆè¿™ç§æ¯”è¾ƒæ–¹æ³•ï¼‰
-//{
-//	int a, b, c, d, t;
-//	scanf("%d %d %d %d", &a, &b, &c, &d);
-//	if (a < b) 
-//	{
-//		t = a; a = b; b = t; 
-//	}
-//	if (c < d) 
-//	{ 
-//		t = c; c = d; d = t; 
-//	}
-//	if (a < c) 
-//	{
-//		t = a; a = c; c = t; 
-//	}
-//	if (b < d) 
-//	{ 
-//		t = b; b = d; d = t; 
-//	}
-//	if (b < c) 
-//	{
-//		t = b; b = c; c = t; 
-//	}
-//	printf("%d %d %d %d", a, b, c, d);
-//}
+
+//Ö¸Ïòº¯ÊıÖ¸ÕëÊı×éµÄÖ¸Õë
+//int arr[4];
+//int(*p)[4];
+//Àà±È
+//int(*p[4])(int,int);
+//int(*(*p)[4])(int,int);
+
+
+//²âÊÔqsortÅÅĞò½á¹¹ÌåÊı¾İ - ·Ö±ğ°´Ãû×ÖºÍÄêÁäÅÅĞò
+#include<stdlib.h>
+#include<string.h>
+
+int cmp_int(const void* x, const void* y)
+{
+	return (*(int*)x - *(int*)y);
+}
+
+void print(int arr[], int sz)
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+
+void test1()
+{
+	int arr[] = { 3,1,2,4,6,5,7,9,8,0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+	print(arr, sz);
+}
+
+struct Stu
+{
+	char name[20];
+	int age;
+};
+
+int compare_str_by_name(const void* x, const void* y)
+{
+	return strcmp(((struct Stu*)x)->name, ((struct Stu*)y)->name);
+}
+
+int compare_str_by_age(const void* x, const void* y)
+{
+	return ((struct Stu*)x)->age - ((struct Stu*)y)->age;//Ïë½µĞò¸Ä±äË³Ğò¾ÍĞĞ
+}
+
+void test2()
+{
+	//ÅÅĞòsÕâ¸öÊı×éÀï±ßµÄÊı¾İ
+	struct Stu s[] = { {"zhang",20},{"li",55},{"wang",40} };//½á¹¹ÌåÊı×é
+	int sz = sizeof(s) / sizeof(s[0]);
+	//qsort(s, sz, sizeof(s[0]), compare_str_by_name);
+	                           //Ìá¹©±È½Ï·½·¨
+	qsort(s, sz, sizeof(s[0]), compare_str_by_age);
+	
+	//¹ØÓÚ½á¹¹ÌåÊı×éµÄ²âÊÔ
+	//²âÊÔ Êı×éÃûÊÇÊ×ÔªËØµÄµØÖ·(²½³¤Îª1¸öÔªËØ1¸ö½á¹¹Ìå´óĞ¡)
+	//printf("%x\n", s);//Êı×éÃû - µØÖ·
+	//printf("%x\n", &s[0]);//µØÖ·
+	//printf("%x\n", s+1);//²î24
+	
+	//²âÊÔ s[0]ÊÇÊ×ÔªËØ£¬Ïàµ±ÓÚ*(s+0)£¬¶ø·ÇÊ×ÔªËØµÄµØÖ·
+	//printf("%d\n", s[0]->age);//err
+	//printf("%d\n", (&s[0])->age);//ok
+	//printf("%d\n", s[0].age);//ok
+
+	//²âÊÔ s[0].nameÊÇ×Ö·ûÊı×éÊ×ÔªËØµÄµØÖ·
+	//printf("%c\n", *s[0].name);//´òÓ¡z
+	//printf("%c\n", *(s[0].name));//´òÓ¡h
+	//printf("%p\n", s[0].name);
+	//printf("%p\n", s[0].name+1);//Ïà²î1
+
+	//strcmp²âÊÔ
+	//char arr1[] = "abc";
+	//char arr2[] = "adc";
+	//printf("%d\n",strcmp(arr1, arr2));//Êä³ö-1 lower
+
+	//½á¹¹ÌåÀàĞÍÖ¸Õë½âÒıÓÃ²âÊÔ
+	//struct Stu a = { "wang",20 };
+	//struct Stu * p = &a;
+	//printf("%d\n",(*p).age);
+}
+
+
+void Swap(char*buf1, char*buf2,int width)
+{
+	int i = 0;
+	for (i = 0; i < width; i++)
+	{
+		char tmp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = tmp;
+		buf1++;
+		buf2++;
+	}
+}
+
+//ÓÃÃ°ÅİÅÅĞòË¼ÏëÊµÏÖqsortº¯Êı
+void bubble_sort(void* base, int sz, int width,int(*cmp)(const void*, const void*))
+{
+	int i = 0;
+	//ÌËÊı
+	for (i = 0; i < sz - 1; i++)
+	{
+		//Ò»ÌËÃ°ÅİÅÅĞòµÄ¹ı³Ì
+		int j = 0;
+		for (j = 0; j < sz - 1 - i; j++)
+		{   //ÌáÈ¡±È½ÏÄ£¿é£¬·â×°º¯ÊıÀ´±È½Ï
+			if (cmp((char*)base + j * width, ((char*)base) + (j+1) * width) > 0)
+			{ 
+				//½»»»
+				Swap((char*)base + j * width, ((char*)base) + (j + 1) * width, width);
+			}
+		}
+	}
+}
+
+void test3()
+{
+	int arr[] = { 3,1,2,4,6,5,7,9,8,0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	bubble_sort(arr, sz, sizeof(arr[0]), cmp_int);
+	print(arr, sz);
+}
+
+void test4()
+{
+	struct Stu s[] = { {"zhang",20},{"li",55},{"wang",40} };//½á¹¹ÌåÊı×é
+	int sz = sizeof(s) / sizeof(s[0]);
+	//bubble_sort(s, sz, sizeof(s[0]), compare_str_by_age);
+	bubble_sort(s, sz, sizeof(s[0]), compare_str_by_name);
+}
+
+int main()
+{
+	//test1();
+	//test2();
+	//test3();
+	test4();
+	return 0;
+}
