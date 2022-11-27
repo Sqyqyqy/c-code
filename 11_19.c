@@ -1,3 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+#include<stdlib.h>
+
+//消失的数字
+//数组nums包含从0到n的所有整数，但其中缺了一个。请编写代码找出那个缺失的整数
+//你有办法在O(n)时间内完成吗？
+//int missingNumber(int* nums, int numsSize)
+//{
+//	int ret = 0;
+//	for (int i = 0; i < numsSize; i++)
+//	{
+//		ret ^= nums[i];
+//	}
+//	for (int j = 0; j <= numsSize; j++)
+//	{
+//		ret ^= j;
+//	}
+//	return ret;
+//}
+
+
 //轮转数组
 //给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数
 //#include<stdlib.h>
@@ -53,6 +76,46 @@
 //}
 
 
+//移除元素
+//给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度
+//不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
+//元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素
+//int removeElement(int* nums, int numsSize, int val)
+//{
+//	int count = 0;
+//	for (int i = 0; i < numsSize; i++)
+//	{
+//		if (nums[i] != val)
+//		{
+//			nums[count] = nums[i];
+//			count++;
+//		}
+//	}
+//	return count;
+//}
+
+
+//删除有序数组中的重复项
+//给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致
+//如果在删除重复项之后有 k 个元素，那么 nums 的前 k 个元素应该保存最终结果
+//不要使用额外的空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成
+//int removeDuplicates(int* nums, int numsSize)
+//{
+//	int begin = 0;
+//	int i = 0;
+//	while (i < numsSize)
+//	{
+//		if (nums[i] != nums[begin])
+//		{
+//			nums[++begin] = nums[i++];
+//		}
+//		else
+//			i++;
+//	}
+//	return begin + 1;
+//}
+
+
 //合并两个有序数组
 //非递减顺序 排列,合并后的数组同样按 非递减顺序 排列
 //注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中
@@ -90,43 +153,4 @@
 //		printf("%d ", num1[i]);
 //	}
 //	return 0;
-//}
-
-
-//消失的数字
-//数组nums包含从0到n的所有整数，但其中缺了一个。请编写代码找出那个缺失的整数
-//你有办法在O(n)时间内完成吗？
-//int missingNumber(int* nums, int numsSize)
-//{
-//	int ret = 0;
-//	for (int i = 0; i < numsSize; i++)
-//	{
-//		ret ^= nums[i];
-//	}
-//	for (int j = 0; j <= numsSize; j++)
-//	{
-//		ret ^= j;
-//	}
-//	return ret;
-//}
-
-
-//删除有序数组中的重复项
-//给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
-//不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
-//元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素
-//int removeDuplicates(int* nums, int numsSize)
-//{
-//	int begin = 0;
-//	int i = 0;
-//	while (i < numsSize)
-//	{
-//		if (nums[i] != nums[begin])
-//		{
-//			nums[++begin] = nums[i++];
-//		}
-//		else
-//			i++;
-//	}
-//	return begin + 1;
 //}
