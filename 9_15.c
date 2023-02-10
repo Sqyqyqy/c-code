@@ -163,3 +163,165 @@
 //	//printf("%d", a);//输出非0，不知道为什么
 //	return 0;
 //}
+
+//输人年月日, 输出它是这一年的第几天
+//int main()
+//{
+//	int y, m, d;
+//	scanf("%d-%d-%d", &y, &m, &d);
+//	int sum = 0;
+//	int a[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
+//	while (m-1)
+//	{
+//		int day = a[m];
+//		if (((y % 40 && y % 100 != 0) || (y % 4000))&&(m==2))
+//		{
+//			day += 1;
+//		}
+//		sum += day;
+//		m--;
+//	}
+//	sum += d;
+//	printf("%d", sum);
+//	return 0;
+//}
+
+
+//输入四个数，按从大到小的顺序输出
+//int main()
+//{
+//	int a, b, c, d;
+//	int arr[4] = { 0 };
+//	scanf("%d %d %d %d",&arr[0],&arr[1], &arr[2], &arr[3]);
+//	int j = 0;
+//	int i = 2;
+//	int tmp = 0;
+//	for (i = 2; i >= 0; i--)
+//	{
+//		for (j = 0; j <= i; j++)
+//		{
+//			if (arr[j] < arr[j + 1])
+//			{
+//				tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//			}
+//		}
+//	}
+//	for (i = 0; i < 4; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+//void main()//未解决但不重要（这种比较方法）
+//{
+//	int a, b, c, d, t;
+//	scanf("%d %d %d %d", &a, &b, &c, &d);
+//	if (a < b) 
+//	{
+//		t = a; a = b; b = t; 
+//	}
+//	if (c < d) 
+//	{ 
+//		t = c; c = d; d = t; 
+//	}
+//	if (a < c) 
+//	{
+//		t = a; a = c; c = t; 
+//	}
+//	if (b < d) 
+//	{ 
+//		t = b; b = d; d = t; 
+//	}
+//	if (b < c) 
+//	{
+//		t = b; b = c; c = t; 
+//	}
+//	printf("%d %d %d %d", a, b, c, d);
+//}
+
+
+//某人从第0天起开始“三天打鱼两天晒网”，问这个人在第n天时应该是“打鱼”还是“晒网”
+//int main()
+//{
+//	int d = 0;
+//	scanf("%d", &d);
+//	d = d % 5;
+//	if (d <= 2)
+//	{
+//		printf("Yes");
+//	}
+//	else
+//	{
+//		printf("No");
+//	}
+//	return 0;
+//}
+
+
+//编程实现模拟计算器的功能
+//int main()
+//{
+//	int a, b;
+//	char c;
+//	scanf("%d%c%d", &a, &c, &b);
+//	if (c != '+'&&c != '-'&&c != '*'&&c != '/'&&c != '%')
+//	{
+//		printf("illegal operator");
+//	}
+//	if (c == '+')
+//	{
+//		printf("%d+%d=%d",a,b, a + b);
+//	}
+//	if (c == '-')
+//	{
+//		printf("%d-%d=%d",a,b,a - b);
+//	}
+//	if (c == '*')
+//	{
+//		printf("%d*%d=%d",a,b, a * b);
+//	}
+//	if (c == '/')
+//	{
+//		printf("%d/%d=%d",a,b, a / b);
+//	}
+//	if (c == '%')
+//	{
+//		printf("%d%c%d=%d",a,c,b, a % b);
+//	}
+//	return 0;
+//}
+//测试 打印%:需要输入两个%号才可以
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	printf("%%\n");//输出%
+//	printf("%d%%%d", a, b);//输出0%0
+//	return 0;
+//}
+
+
+//给定一个不多于4位的正整数，要求：求出它是几位数，按逆序打印出各位数字
+//int main()
+//{
+//	int n = 0;
+//	scanf("%d", &n);
+//	int flag = n;
+//	int count = 1;
+//	while (n = n / 10)
+//	{
+//		count++;
+//	}
+//	printf("%d ", count);
+//	while (flag)
+//	{
+//		printf("%d", flag % 10);
+//		flag /= 10;
+//	}
+//	return 0;
+//}
+//----------------------------------------------------
+
