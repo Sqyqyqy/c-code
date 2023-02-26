@@ -257,3 +257,134 @@ int PartSort1(int* a, int begin, int end)
 	Swap(&a[keyi], &a[left]);
 	return left;
 }
+
+//挖坑法
+int PartSort2(int* a, int begin, int end)
+{
+	//三数取中优化
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
+
+	int key = a[begin];
+	int left = begin, right = end;
+	int hole = left;
+	while (left < right)
+	{
+		while (left < right && a[right] >= key)
+		{
+			--right;
+		}
+		a[hole] = a[right];
+		hole = right;
+
+		while (left < right && a[left] <= key)
+		{
+			++left;
+		}
+		a[hole] = a[left];
+		hole = left;
+	}
+	a[hole] = key;
+	return hole;
+}
+
+//前后指针
+//w
+int PartSort3(int* a, int begin, int end)
+{
+	//三数取中优化
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
+
+	int prev = begin, cur = begin + 1;
+	int keyi = begin;
+	while (cur <= end)
+	{
+		while (cur <= end && a[cur] >= a[keyi])
+		{
+			cur++;
+		}
+		prev++;
+		if (cur <= end && prev != cur)
+		{
+			Swap(&a[prev], &a[cur]);
+		}
+		cur++;
+	}
+	Swap(&a[prev], &a[keyi]);
+	return prev;
+}
+
+//三路划分
+void PartSort4(int* a, int begin, int end, int* end1, int* begin2)
+{
+	//三数取中优化
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
+
+	int left = begin, cur = begin + 1, right = end;
+	int key = a[begin];
+
+	while (cur <= right)
+	{
+		if (a[cur] > key)
+		{
+			Swap(&a[cur], &a[right]);
+			right--;
+		}
+		else if (a[cur] == key)
+		{
+			cur++;
+		}
+		else
+		{
+			Swap(&a[left], &a[cur]);
+			left++;
+			cur++;
+		}
+	}
+	*end1 = left - 1;
+	*begin2 = cur;
+}
+//三路划分
+void QuickSort_PS4(int* a, int begin, int end)
+{
+	if (begin >= end)
+		return;
+
+	//小区间优化
+	//if ((end - begin + 1) <= 15)
+	//{
+	//	//小区间用直接插入排序处理，优化掉百分之八九十的递归调用
+	//	InsertSort(a + begin, end - begin + 1);
+	//}
+	//else
+	//{
+	int end1, begin2;
+	PartSort4(a, begin, end, &end1, &begin2);
+
+	QuickSort(a, begin, end1);
+	QuickSort(a, begin2, end);
+
+	//}
+}
+
+void QuickSort(int* a, int begin, int end)
+{
+	if (begin >= end)
+		return;
+
+	//小区间优化
+	if ((end - begin + 1) <= 15)
+	{
+		//小区间用直接插入排序处理，优化掉百分之八九十的递归调用
+		InsertSort(a + begin, end - begin + 1);
+	}
+	else
+	{
+		int left = PartSort2(a, begin, end);
+
+		QuickSort(a, begin, left - 1);
+		QuickSort(a, left + 1, end);
+	}
+}
