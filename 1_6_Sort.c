@@ -388,3 +388,139 @@ void QuickSort(int* a, int begin, int end)
 		QuickSort(a, left + 1, end);
 	}
 }
+
+//快速排序非递归
+void QuickSortNotR(int* a, int begin, int end)
+{
+	ST st;
+	StackInit(&st);
+	StackPush(&st, begin);
+	StackPush(&st, end);
+	while (!StackEmpty(&st))
+	{
+		int end = StackTop(&st);
+		StackPop(&st);
+		int begin = StackTop(&st);
+		StackPop(&st);
+
+		int mid = PartSort2(a, begin, end);
+		
+		if (end - mid - 1 >= 1)
+		{
+			StackPush(&st, mid + 1);
+			StackPush(&st, end);
+		}
+		if (mid - 1 - begin >= 1)
+		{
+			StackPush(&st, begin);
+			StackPush(&st, mid - 1);
+		}
+	}
+	StackDestroy(&st);
+}
+
+
+//归并排序
+void _MergeSort(int* a,int begin,int end,int* tmp)
+{
+	if (begin == end)
+		return;
+	
+	int mid = (begin + end) / 2;
+	_MergeSort(a, begin, mid, tmp);
+	_MergeSort(a, mid + 1, end, tmp);
+	//归并
+	int begin1 = begin, end1 = mid;
+	int begin2 = mid + 1, end2 = end;
+	int i = begin1;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] <= a[begin2])
+		{
+			tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+	while (begin1 <= end1)
+	{
+		tmp[i++] = a[begin1++];
+	}
+	while (begin2 <= end2)
+	{
+		tmp[i++] = a[begin2++];
+	}
+	memcpy(a + begin, tmp + begin, sizeof(int)*(end - begin + 1));
+}
+
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int)*n);
+	if (tmp == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+
+	_MergeSort(a, 0, n - 1, tmp);
+
+	free(tmp);
+	tmp = NULL;
+}
+
+
+//归并排序非递归
+void MergeSortNonR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int)*n);
+	if (tmp == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+
+	int range = 1;
+	while (range < n)
+	{
+		for (int i = 0; i < n ;i += 2 * range)
+		{
+			int begin1 = i, end1 = i + range - 1;
+			int begin2 = i + range, end2 = end1 + range;
+			if (begin2 >= n)
+			{
+				break;
+			}
+			if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			int j = begin1;
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] <= a[begin2])
+				{
+					tmp[j++] = a[begin1++];
+				}
+				else
+				{
+					tmp[j++] = a[begin2++];
+				}
+			}
+			while (begin1 <= end1)
+			{
+				tmp[j++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[j++] = a[begin2++];
+			}
+			memcpy(a + i, tmp + i, sizeof(int)*(end2 - i + 1));
+		}
+
+		range *= 2;
+	}
+	free(tmp);
+	tmp = NULL;
+}
