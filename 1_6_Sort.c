@@ -524,3 +524,46 @@ void MergeSortNonR(int* a, int n)
 	free(tmp);
 	tmp = NULL;
 }
+
+
+//计数排序
+//时间复杂度：O(N+range)
+//空间复杂度：O(range)
+void CountSort(int* a, int n)
+{
+	//获得最大最小值
+	int max = a[0], min = a[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] > max)
+			max = a[i];
+		if (a[i] < min)
+			min = a[i];
+	}
+
+	int range = max - min + 1;
+	int* countarr = (int*)calloc(range, sizeof(int));
+	if (countarr == NULL)
+	{
+		perror("calloc fail\n");
+		exit(-1);
+	}
+	//统计次数
+	for (int i = 0; i < n; i++)
+	{
+		countarr[a[i] - min]++;
+	}
+	
+	int k = 0;
+	for (int i = 0; i < range; i++)
+	{
+		int count = countarr[i];
+		while (count--)
+		{
+			a[k++] = i + min;
+		}
+	}
+	
+	free(countarr);
+	countarr = NULL;
+}
